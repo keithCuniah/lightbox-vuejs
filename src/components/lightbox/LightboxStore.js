@@ -10,12 +10,18 @@ class LightboxStore {
     return this.state.images.push(url) - 1;
   }
 
+  remove(url) {
+    this.state.images = this.state.images.filter((image) => image !== url);
+  }
+
   open(index) {
     this.state.index = index;
   }
+
   close() {
     this.state.index = false;
   }
+
   next() {
     this.state.index++;
     if (this.state.index >= this.state.images.length) {
