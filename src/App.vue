@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <a
-      v-lightbox
-      v-for="n in 9"
-      :key="n"
-      :href="`https://robohash.org/${n - 1}`"
-    >
+    <a v-lightbox v-for="n in 9" :key="n" :href="`https://robohash.org/${n}`">
       <img :src="`https://robohash.org/${n}?size=200x200`" />
     </a>
     <lightbox></lightbox>

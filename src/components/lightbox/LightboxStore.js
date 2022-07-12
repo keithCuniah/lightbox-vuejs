@@ -7,11 +7,26 @@ class LightboxStore {
   }
 
   addImage(url) {
-    return this.state.images.push(url);
+    return this.state.images.push(url) - 1;
   }
 
   open(index) {
     this.state.index = index;
+  }
+  close() {
+    this.state.index = false;
+  }
+  next() {
+    this.state.index++;
+    if (this.state.index >= this.state.images.length) {
+      this.state.index = 0;
+    }
+  }
+  prev() {
+    this.state.index--;
+    if (this.state.index < 0) {
+      this.state.index = this.state.images.length - 1;
+    }
   }
 }
 
