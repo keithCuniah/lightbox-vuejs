@@ -21,11 +21,8 @@ export default {
     return { state: store.state, direction: "next" };
   },
   computed: {
-    url() {
-      return this.state.image;
-    },
     image() {
-      return this.state.images[this.state.index];
+      return this.state.images[this.state.group][this.state.index];
     },
     transition() {
       return `lightbox-${this.direction}`;

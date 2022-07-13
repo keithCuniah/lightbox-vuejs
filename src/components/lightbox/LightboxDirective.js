@@ -2,16 +2,18 @@ import Vue from "vue";
 import store from "./LightboxStore";
 
 Vue.directive("lightbox", {
-  bind(el) {
-    console.log("binding");
-    store.addImage(el.getAttribute("href"));
+  bind(el, binding) {
+    let group = binding.value === undefined ? "default" : "robotABC";
+    console.log(group);
+    store.addImage(el.getAttribute("href"), group);
     el.addEventListener("click", function (e) {
       e.preventDefault();
-      store.open(el.getAttribute("href"));
+      store.open(el.getAttribute("href"), group);
     });
   },
-  unbind(el) {
+  unbind(el, binding) {
     console.log("unbinding");
-    store.remove(el.getAttribute("href"));
+    let group = binding.value === undefined ? "default" : "robotABC";
+    store.remove(el.getAttribute("href"), group);
   },
 });
